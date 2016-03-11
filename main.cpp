@@ -67,6 +67,18 @@ int main(int argc, char const *argv[]){
 				nom=1;
 				den=1;
 			}
+			int dividir=0;
+			if(nom>den){
+				dividir=nom;
+			}else{
+				dividir=den;
+			}
+			for(int i=dividir;i>1;i--){
+				if((nom%i==0) && (den%i==0)){			
+					nom=nom/i;
+					den=den/i;
+				}
+			}
 			racionales.push_back(Racional(nom,den));
 		}else if(opcion==2){
 			cout << ("Lista: ") << endl;

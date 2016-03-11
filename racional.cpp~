@@ -9,18 +9,16 @@ using std::ostream;
 using std::istream;
 using std::showpos;
 using std::noshowpos;
+using std::cout;
+using std::endl;
 
 Racional::Racional(int nom,int den):nom(nom), den(den){
 }
 const Racional Racional::operator+(const Racional& r)const{
 	int x,y;	
-	if(den==r.den){
-		x=(nom*r.den)+(r.nom*den);
-		y=den;	
-	}else{
-		x=(nom*r.den)+(r.nom*den);
-		y=den*r.den;
-	}
+	x=(nom*r.den)+(r.nom*den);
+	y=den*r.den;
+
 
 	if(nom==0){
 		x=r.nom;
@@ -30,17 +28,24 @@ const Racional Racional::operator+(const Racional& r)const{
 		x=nom;
 		y=den;
 	}
+	int dividir=0;
+	if(x>y){
+		dividir=x;
+	}else{
+		dividir=y;
+	}
+	for(int i=dividir;i>1;i--){
+		if((x%i==0) && (y%i==0)){			
+			x=x/i;
+			y=y/i;
+		}
+	}
 	 return Racional(x, y);
 }
 const Racional Racional::operator-(const Racional& r)const{
 	int x,y;	
-	if(den==r.den){
-		x=(nom*r.den)-(r.nom*den);
-		y=den;	
-	}else{
-		x=(nom*r.den)-(r.nom*den);
-		y=den*r.den;
-	}
+	x=(nom*r.den)-(r.nom*den);
+	y=den*r.den;	
 	if(nom==0){
 		x=r.nom;
 		y=r.den;
@@ -48,6 +53,18 @@ const Racional Racional::operator-(const Racional& r)const{
 	if(r.nom==0){
 		x=nom;
 		y=den;
+	}
+	int dividir=0;
+	if(x>y){
+		dividir=x;
+	}else{
+		dividir=y;
+	}
+	for(int i=dividir;i>1;i--){
+		if((x%i==0) && (y%i==0)){			
+			x=x/i;
+			y=y/i;
+		}
 	}
 	 return Racional(x, y);
 }
@@ -63,6 +80,18 @@ const Racional Racional::operator*(const Racional& r)const{
 		x=0;
 		y=0;
 	}
+	int dividir=0;
+	if(x>y){
+		dividir=x;
+	}else{
+		dividir=y;
+	}
+	for(int i=dividir;i>1;i--){
+		if((x%i==0) && (y%i==0)){			
+			x=x/i;
+			y=y/i;
+		}
+	}
 	return Racional(x, y);
 }
 const Racional Racional::operator/(const Racional& r)const{
@@ -76,6 +105,21 @@ const Racional Racional::operator/(const Racional& r)const{
 	if(r.nom==0){
 		x=0;
 		y=0;
+	}
+	int dividir=0;
+	if(x>y){
+		dividir=x;
+	}else{
+		dividir=y;
+	}
+	for(int i=dividir;i>1;i--){
+		if((x%i==0) && (y%i==0)){			
+			x=x/i;
+			y=y/i;
+		}
+	}
+	if(y==0){
+		cout << "error valores incorrectos" << endl;
 	}
 	return Racional(x, y);
 }
