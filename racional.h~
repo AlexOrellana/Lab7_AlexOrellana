@@ -15,6 +15,5 @@ public:
 	const Racional operator/(const Racional&)const;
 	const Racional operator*(const Racional&)const;
 	friend ostream& operator<<(ostream&, const Racional&);
-	friend istream& operator>>(istream&, Racional&);
 };
 
